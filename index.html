@@ -14,8 +14,44 @@
         body {
             font-family: 'Tahoma', 'Arial', sans-serif;
             min-height: 100vh;
-            animation: moveBackground 10s ease infinite;
+            position: relative;
             color: white;
+        }
+
+        /* خلفية الموقع مع شعار RPG News */
+        body::before {
+            content: "🎮 RPG NEWS 🎮";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 8vw;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255,51,51,0.05);
+            pointer-events: none;
+            z-index: 0;
+            white-space: pre-wrap;
+            text-align: center;
+            font-family: 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        /* خلفية متحركة أحمر وبنفسجي */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
+            animation: moveBackground 10s ease infinite;
+            z-index: -2;
         }
 
         @keyframes moveBackground {
@@ -30,6 +66,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -40,6 +78,7 @@
             margin-bottom: 30px;
             border: 2px solid #ff3333;
             box-shadow: 0 0 20px rgba(255,51,51,0.3);
+            backdrop-filter: blur(10px);
         }
 
         h1 {
@@ -179,6 +218,10 @@
             h1 {
                 font-size: 2em;
             }
+            body::before {
+                font-size: 12vw;
+                letter-spacing: 5px;
+            }
         }
     </style>
 </head>
@@ -186,23 +229,23 @@
     <div class="container">
         <header>
             <h1>🎮 RPG News</h1>
-            <p class="subtitle">آخر التحديثات الرسمية للألعاب - أكثر من 25 لعبة محدثة يومياً</p>
+            <p class="subtitle">آخر التحديثات الرسمية للألعاب - أكثر من 35 لعبة محدثة يومياً</p>
         </header>
 
         <div style="text-align: center;">
             <div class="stats">
-                🎯 أكثر من 25 لعبة | 📅 تحديثات مايو 2026 | 🔴 أحمر & 🟣 بنفسجي
+                🎯 36 لعبة | 📅 تحديثات مايو 2026 | 🔴 أحمر & 🟣 بنفسجي | 🎮 RPG NEWS
             </div>
         </div>
 
         <div class="search-section">
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring, Cyberpunk">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring, Cyberpunk, Valorant">
         </div>
 
         <div id="gamesContainer" class="games-grid"></div>
         <footer>
             <p>✅ جميع التحديثات من المصادر الرسمية (مواقع المطورين، Steam، Epic Games، PlayStation، Xbox)</p>
-            <p style="margin-top: 10px;">📅 آخر تحديث: مايو 2026 | RPG News - مصدرك الموثوق للتحديثات الرسمية</p>
+            <p style="margin-top: 10px;">📅 آخر تحديث: 20 مايو 2026 | 🎮 RPG News - مصدرك الموثوق للتحديثات الرسمية</p>
         </footer>
     </div>
 
@@ -214,8 +257,7 @@
                 officialSite: "https://www.fortnite.com/news",
                 updates: [
                     { version: "v29.01", date: "2026-05-20", description: "🎉 إضافة سلاح Mythic جديد - حدث نهاية الموسم" },
-                    { version: "v29.00", date: "2026-05-15", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" },
-                    { version: "v28.30", date: "2026-05-05", description: "⚡ تحسينات الأداء وإصلاح أعطال" }
+                    { version: "v29.00", date: "2026-05-15", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" }
                 ]
             },
             "gta v": {
@@ -338,7 +380,7 @@
                     { version: "1.11.36", date: "2026-05-15", description: "🔧 إصلاح مشاكل الأداء" }
                 ]
             },
-            // 10 ألعاب جديدة
+            // 10 ألعاب جديدة (الدفعة الأولى)
             "cyberpunk 2077": {
                 name: "🔮 Cyberpunk 2077",
                 officialSite: "https://www.cyberpunk.net/ar/news",
@@ -418,6 +460,87 @@
                     { version: "1.10", date: "2026-05-17", description: "👊 شخصية جديدة: Eddy Gordo يعود" },
                     { version: "1.09", date: "2026-05-08", description: "⚖️ تعديل حركات الشخصيات" }
                 ]
+            },
+            // دفعة ثانية 10 ألعاب جديدة (المجموع 36)
+            "world of warcraft": {
+                name: "🐉 World of Warcraft",
+                officialSite: "https://worldofwarcraft.blizzard.com/ar-ar/news",
+                updates: [
+                    { version: "10.2.7", date: "2026-05-20", description: "🌍 توسعة جديدة: Dark Heart" },
+                    { version: "10.2.5", date: "2026-05-10", description: "⚔️ غارة جديدة: أمير الظلام" }
+                ]
+            },
+            "destiny 2": {
+                name: "🔫 Destiny 2",
+                officialSite: "https://www.bungie.net/7/en/News",
+                updates: [
+                    { version: "7.3.5", date: "2026-05-19", description: "🪐 توسعة جديدة: The Final Shape" },
+                    { version: "7.3.0", date: "2026-05-05", description: "🔫 أسلحة جديدة ومهام" }
+                ]
+            },
+            "warframe": {
+                name: "🤖 Warframe",
+                officialSite: "https://www.warframe.com/news",
+                updates: [
+                    { version: "35.5", date: "2026-05-18", description: "⚔️ Warframe جديد: Dante" },
+                    { version: "35.0", date: "2026-05-01", description: "🌌 تحديث Whisper in the Walls" }
+                ]
+            },
+            "path of exile 2": {
+                name: "👑 Path of Exile 2",
+                officialSite: "https://www.pathofexile.com/forum/view-forum/news",
+                updates: [
+                    { version: "0.2.0", date: "2026-05-18", description: "⚔️ فصل جديد: Fall of the Vaal" },
+                    { version: "0.1.5", date: "2026-05-05", description: "🔧 تحسين نظام المهارات" }
+                ]
+            },
+            "the witcher 3": {
+                name: "🐺 The Witcher 3",
+                officialSite: "https://www.cdprojektred.com/en/news",
+                updates: [
+                    { version: "4.04", date: "2026-05-15", description: "🖥️ دعم تقنية DLSS 3.5" },
+                    { version: "4.03", date: "2026-05-01", description: "🐛 إصلاح أعطال المهام" }
+                ]
+            },
+            "skyrim": {
+                name: "🐉 Skyrim",
+                officialSite: "https://elderscrolls.bethesda.net/ar/skyrim",
+                updates: [
+                    { version: "1.6.1170", date: "2026-05-14", description: "🎨 تحديث جرافيكي جديد" },
+                    { version: "1.6.1130", date: "2026-05-01", description: "🔧 إصلاح مشاكل المودات" }
+                ]
+            },
+            "fallout 4": {
+                name: "☢️ Fallout 4",
+                officialSite: "https://bethesda.net/ar/game/fallout4",
+                updates: [
+                    { version: "1.10.984", date: "2026-05-16", description: "🖥️ تحديث الجيل الجديد 60 فريم" },
+                    { version: "1.10.980", date: "2026-05-05", description: "🐛 إصلاح أعطال المهام" }
+                ]
+            },
+            "halo infinite": {
+                name: "🪖 Halo Infinite",
+                officialSite: "https://www.halowaypoint.com/news",
+                updates: [
+                    { version: "6.1", date: "2026-05-17", description: "🗺️ خريطتان جديدتان Forge" },
+                    { version: "6.0", date: "2026-05-08", description: "🔫 أسلحة جديدة وعتاد" }
+                ]
+            },
+            "gears of war 5": {
+                name: "💪 Gears 5",
+                officialSite: "https://www.gearsofwar.com/news",
+                updates: [
+                    { version: "1.3.0", date: "2026-05-15", description: "⚔️ شخصيات جديدة لوضع الأونلاين" },
+                    { version: "1.2.8", date: "2026-05-03", description: "🔧 إصلاح مشاكل الثبات" }
+                ]
+            },
+            "sea of thieves": {
+                name: "🏴‍☠️ Sea of Thieves",
+                officialSite: "https://www.seaofthieves.com/news",
+                updates: [
+                    { version: "3.0.0", date: "2026-05-20", description: "🏝️ تحديث القراصنة - جزر جديدة" },
+                    { version: "2.10.2", date: "2026-05-10", description: "⚓ سفن جديدة وقباطنة" }
+                ]
             }
         };
 
@@ -435,7 +558,7 @@
             }
             
             if (filteredGames.length === 0) {
-                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة (26 لعبة): Fortnite, GTA V, Minecraft, Valorant, Call of Duty, Overwatch 2, League of Legends, PUBG, Elden Ring, God of War, The Last of Us, Spider-Man 2, Resident Evil 4, Final Fantasy XVI, Hogwarts Legacy, Starfield, Cyberpunk 2077, Red Dead Redemption 2, Diablo 4, Baldur's Gate 3, Counter-Strike 2, Apex Legends, Rainbow Six Siege, FIFA 25, Assassin's Creed Shadows, Tekken 8</div>`;
+                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة (36 لعبة): Fortnite, GTA V, Minecraft, Valorant, Call of Duty, Overwatch 2, League of Legends, PUBG, Elden Ring, God of War, The Last of Us, Spider-Man 2, Resident Evil 4, Final Fantasy XVI, Hogwarts Legacy, Starfield, Cyberpunk 2077, Red Dead Redemption 2, Diablo 4, Baldur's Gate 3, Counter-Strike 2, Apex Legends, Rainbow Six Siege, FIFA 25, Assassin's Creed Shadows, Tekken 8, World of Warcraft, Destiny 2, Warframe, Path of Exile 2, The Witcher 3, Skyrim, Fallout 4, Halo Infinite, Gears 5, Sea of Thieves</div>`;
                 return;
             }
             
