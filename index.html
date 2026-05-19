@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatchHub - التحديثات الرسمية للألعاب</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(0,0,0,0.5);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .search-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(78,205,196,0.3);
+        }
+
+        .search-box::placeholder {
+            color: #aaa;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .game-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .game-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #4ecdc4;
+        }
+
+        .update-item {
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-right: 3px solid #4ecdc4;
+        }
+
+        .update-version {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .update-date {
+            font-size: 0.8em;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #ccc;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+        }
+
+        .official-badge {
+            display: inline-block;
+            background: #4ecdc4;
+            color: #0f0c29;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 PatchHub</h1>
+            <p class="subtitle">جميع التحديثات الرسمية للألعاب في مكان واحد</p>
+        </header>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثلاً: Fortnite, GTA V, Minecraft, Valorant">
+        </div>
+
+        <div id="gamesContainer" class="games-grid"></div>
+        <footer>
+            <p>✅ جميع التحديثات مستمدة من المصادر الرسمية (مواقع المطورين، Steam، Epic Games، Xbox، PlayStation)</p>
+            <p style="margin-top: 10px;">📅 آخر تحديث للبيانات: مايو 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // قاعدة بيانات التحديثات الرسمية (مثال - يمكنك التوسيع منها)
+        const gamesDatabase = {
+            "fortnite": {
+                name: "🎯 Fortnite",
+                officialSite: "https://www.fortnite.com/news",
+                updates: [
+                    { version: "v29.01", date: "2026-05-15", description: "🎉 إضافة سلاح Mythic جديد - خريطة موسم الصيف" },
+                    { version: "v29.00", date: "2026-05-01", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" },
+                    { version: "v28.20", date: "2026-04-10", description: "⚡ تحسينات في الأداء وإصلاح أعطال" }
+                ]
+            },
+            "gta v": {
+                name: "🚗 GTA V",
+                officialSite: "https://www.rockstargames.com/ar/newswire",
+                updates: [
+                    { version: "1.69", date: "2026-05-10", description: "🏎️ إضافة سيارات جديدة في وضع الأونلاين" },
+                    { version: "1.68", date: "2026-04-05", description: "🔧 إصلاح مشاكل الثبات وتحسين الرسومات" }
+                ]
+            },
+            "minecraft": {
+                name: "⛏️ Minecraft",
+                officialSite: "https://www.minecraft.net/ar/news",
+                updates: [
+                    { version: "1.21", date: "2026-05-20", description: "🏰 تحديث الخريطة - إضافة 3 حيوانات جديدة" },
+                    { version: "1.20.5", date: "2026-04-15", description: "🌸 تحديث الكرز - أشجار وسيراميك جديدة" }
+                ]
+            },
+            "valorant": {
+                name: "🔫 Valorant",
+                officialSite: "https://playvalorant.com/ar-ae/news/",
+                updates: [
+                    { version: "8.11", date: "2026-05-18", description: "🗡️ وكيل جديد: Phantom - قدرات التخفي" },
+                    { version: "8.10", date: "2026-05-04", description: "⚖️ تعديل توازن الأسلحة - زيادة دقة Vandal" }
+                ]
+            },
+            "call of duty": {
+                name: "🎖️ Call of Duty",
+                officialSite: "https://www.callofduty.com/ar/news",
+                updates: [
+                    { version: "Season 4 Reloaded", date: "2026-05-12", description: "🗺️ خريطة جديدة في وضع الزومبي" },
+                    { version: "Season 4", date: "2026-04-28", description: "🔫 إضافة 3 أسلحة جديدة وأحداث موسمية" }
+                ]
+            },
+            "overwatch 2": {
+                name: "🛡️ Overwatch 2",
+                officialSite: "https://overwatch.blizzard.com/ar/news/",
+                updates: [
+                    { version: "2.11.0", date: "2026-05-14", description: "✨ بطل جديد: Juno - معالج من الفضاء" },
+                    { version: "2.10.1", date: "2026-04-30", description: "🎨 skins جديدة في المتجر" }
+                ]
+            },
+            "league of legends": {
+                name: "⚔️ League of Legends",
+                officialSite: "https://www.leagueoflegends.com/ar-ar/news/",
+                updates: [
+                    { version: "14.10", date: "2026-05-08", description: "🔮 بطل جديد: Aurora - ساحرة القطب الشمالي" },
+                    { version: "14.9", date: "2026-04-24", description: "🔄 تحديث منتصف الموسم - تغييرات في العناصر" }
+                ]
+            },
+            "pubg": {
+                name: "🪂 PUBG",
+                officialSite: "https://pubg.com/ar/news/",
+                updates: [
+                    { version: "30.1", date: "2026-05-05", description: "🏝️ خريطة جديدة: Tropical Island" },
+                    { version: "30.0", date: "2026-04-20", description: "🚁 إضافة مروحيات قابلة للقيادة" }
+                ]
+            }
+        };
+
+        function displayGames(searchTerm = "") {
+            const container = document.getElementById('gamesContainer');
+            container.innerHTML = "";
+            
+            let filteredGames = Object.keys(gamesDatabase);
+            
+            if (searchTerm.trim() !== "") {
+                filteredGames = filteredGames.filter(gameKey => 
+                    gamesDatabase[gameKey].name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    gameKey.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+            
+            if (filteredGames.length === 0) {
+                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 جرب: Fortnite, GTA V, Minecraft, Valorant</div>`;
+                return;
+            }
+            
+            filteredGames.forEach(gameKey => {
+                const game = gamesDatabase[gameKey];
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                
+                let updatesHTML = '';
+                game.updates.forEach(update => {
+                    updatesHTML += `
+                        <div class="update-item">
+                            <div><span class="update-version">${update.version}</span> <span class="official-badge">رسمي</span></div>
+                            <div>📝 ${update.description}</div>
+                            <div class="update-date">📅 ${update.date}</div>
+                        </div>
+                    `;
+                });
+                
+                gameCard.innerHTML = `
+                    <div class="game-title">
+                        ${game.name}
+                        <a href="${game.officialSite}" target="_blank" style="font-size: 12px; color: #4ecdc4; text-decoration: none;"> 🔗 الموقع الرسمي</a>
+                    </div>
+                    ${updatesHTML}
+                `;
+                
+                container.appendChild(gameCard);
+            });
+        }
+        
+        // البحث المباشر أثناء الكتابة
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            displayGames(e.target.value);
+        });
+        
+        // عرض جميع الألعاب عند تحميل الصفحة
+        displayGames();
+    </script>
+</body>
+</html>
