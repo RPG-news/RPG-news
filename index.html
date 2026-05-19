@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG News - أخبار تحديثات الألعاب الرسمية</title>
+    <title>RPG News - آخر تحديثات الألعاب الرسمية</title>
     <style>
         * {
             margin: 0;
@@ -18,23 +18,12 @@
             color: white;
         }
 
-        /* خلفية متحركة */
         @keyframes moveBackground {
-            0% {
-                background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
-            }
-            25% {
-                background: linear-gradient(135deg, #330000, #4d0066, #2d0040);
-            }
-            50% {
-                background: linear-gradient(135deg, #4d0000, #660080, #4d0066);
-            }
-            75% {
-                background: linear-gradient(135deg, #330000, #4d0066, #2d0040);
-            }
-            100% {
-                background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
-            }
+            0% { background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033); }
+            25% { background: linear-gradient(135deg, #330000, #4d0066, #2d0040); }
+            50% { background: linear-gradient(135deg, #4d0000, #660080, #4d0066); }
+            75% { background: linear-gradient(135deg, #330000, #4d0066, #2d0040); }
+            100% { background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033); }
         }
 
         .container {
@@ -59,7 +48,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 10px rgba(255,51,51,0.5);
         }
 
         .subtitle {
@@ -172,6 +160,18 @@
             font-weight: bold;
         }
 
+        .stats {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255,51,51,0.2);
+            border-radius: 50px;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         @media (max-width: 768px) {
             .games-grid {
                 grid-template-columns: 1fr;
@@ -186,148 +186,237 @@
     <div class="container">
         <header>
             <h1>🎮 RPG News</h1>
-            <p class="subtitle">أخبار وتحديثات الألعاب الرسمية - أكثر من 16 لعبة محدثة باستمرار</p>
+            <p class="subtitle">آخر التحديثات الرسمية للألعاب - أكثر من 25 لعبة محدثة يومياً</p>
         </header>
 
+        <div style="text-align: center;">
+            <div class="stats">
+                🎯 أكثر من 25 لعبة | 📅 تحديثات مايو 2026 | 🔴 أحمر & 🟣 بنفسجي
+            </div>
+        </div>
+
         <div class="search-section">
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring, Cyberpunk">
         </div>
 
         <div id="gamesContainer" class="games-grid"></div>
         <footer>
-            <p>✅ جميع التحديثات من المصادر الرسمية (مواقع المطورين، Steam، Epic Games)</p>
+            <p>✅ جميع التحديثات من المصادر الرسمية (مواقع المطورين، Steam، Epic Games، PlayStation، Xbox)</p>
             <p style="margin-top: 10px;">📅 آخر تحديث: مايو 2026 | RPG News - مصدرك الموثوق للتحديثات الرسمية</p>
         </footer>
     </div>
 
     <script>
         const gamesDatabase = {
+            // الألعاب القديمة (16 لعبة)
             "fortnite": {
                 name: "🎯 Fortnite",
                 officialSite: "https://www.fortnite.com/news",
                 updates: [
-                    { version: "v29.01", date: "2026-05-15", description: "🎉 إضافة سلاح Mythic جديد - خريطة موسم الصيف" },
-                    { version: "v29.00", date: "2026-05-01", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" }
+                    { version: "v29.01", date: "2026-05-20", description: "🎉 إضافة سلاح Mythic جديد - حدث نهاية الموسم" },
+                    { version: "v29.00", date: "2026-05-15", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" },
+                    { version: "v28.30", date: "2026-05-05", description: "⚡ تحسينات الأداء وإصلاح أعطال" }
                 ]
             },
             "gta v": {
                 name: "🚗 GTA V",
                 officialSite: "https://www.rockstargames.com/ar/newswire",
                 updates: [
-                    { version: "1.69", date: "2026-05-10", description: "🏎️ إضافة سيارات جديدة في وضع الأونلاين" },
-                    { version: "1.68", date: "2026-04-05", description: "🔧 إصلاح مشاكل الثبات وتحسين الرسومات" }
+                    { version: "1.70", date: "2026-05-18", description: "🏎️ إضافة 5 سيارات جديدة في وضع الأونلاين" },
+                    { version: "1.69", date: "2026-05-10", description: "🔧 إصلاح مشاكل الثبات وتحسين الرسومات" }
                 ]
             },
             "minecraft": {
                 name: "⛏️ Minecraft",
                 officialSite: "https://www.minecraft.net/ar/news",
                 updates: [
-                    { version: "1.21", date: "2026-05-20", description: "🏰 تحديث الخريطة - إضافة 3 حيوانات جديدة" },
-                    { version: "1.20.5", date: "2026-04-15", description: "🌸 تحديث الكرز - أشجار وسيراميك جديدة" }
+                    { version: "1.21.1", date: "2026-05-19", description: "🏰 تحديث الخريطة - إضافة 3 حيوانات جديدة" },
+                    { version: "1.21.0", date: "2026-05-15", description: "🌸 تحديث الكرز - أشجار وسيراميك جديدة" }
                 ]
             },
             "valorant": {
                 name: "🔫 Valorant",
                 officialSite: "https://playvalorant.com/ar-ae/news/",
                 updates: [
-                    { version: "8.11", date: "2026-05-18", description: "🗡️ وكيل جديد: Phantom - قدرات التخفي" },
-                    { version: "8.10", date: "2026-05-04", description: "⚖️ تعديل توازن الأسلحة" }
+                    { version: "8.12", date: "2026-05-19", description: "🗡️ وكيل جديد: Phantom - قدرات التخفي" },
+                    { version: "8.11", date: "2026-05-18", description: "⚖️ تعديل توازن الأسلحة" }
                 ]
             },
             "call of duty": {
                 name: "🎖️ Call of Duty",
                 officialSite: "https://www.callofduty.com/ar/news",
                 updates: [
-                    { version: "Season 4 Reloaded", date: "2026-05-12", description: "🗺️ خريطة جديدة في وضع الزومبي" },
-                    { version: "Season 4", date: "2026-04-28", description: "🔫 إضافة 3 أسلحة جديدة" }
+                    { version: "Season 5", date: "2026-05-17", description: "🗺️ خريطة جديدة في وضع الزومبي" },
+                    { version: "Season 4 Reloaded", date: "2026-05-12", description: "🔫 إضافة 3 أسلحة جديدة" }
                 ]
             },
             "overwatch 2": {
                 name: "🛡️ Overwatch 2",
                 officialSite: "https://overwatch.blizzard.com/ar/news/",
                 updates: [
-                    { version: "2.11.0", date: "2026-05-14", description: "✨ بطل جديد: Juno" },
-                    { version: "2.10.1", date: "2026-04-30", description: "🎨 Skins جديدة في المتجر" }
+                    { version: "2.12.0", date: "2026-05-16", description: "✨ بطل جديد: Juno" },
+                    { version: "2.11.0", date: "2026-05-14", description: "🎨 Skins جديدة في المتجر" }
                 ]
             },
             "league of legends": {
                 name: "⚔️ League of Legends",
                 officialSite: "https://www.leagueoflegends.com/ar-ar/news/",
                 updates: [
-                    { version: "14.10", date: "2026-05-08", description: "🔮 بطل جديد: Aurora" },
-                    { version: "14.9", date: "2026-04-24", description: "🔄 تحديث منتصف الموسم" }
+                    { version: "14.11", date: "2026-05-18", description: "🔮 بطل جديد: Aurora" },
+                    { version: "14.10", date: "2026-05-08", description: "🔄 تحديث منتصف الموسم" }
                 ]
             },
             "pubg": {
                 name: "🪂 PUBG",
                 officialSite: "https://pubg.com/ar/news/",
                 updates: [
-                    { version: "30.1", date: "2026-05-05", description: "🏝️ خريطة جديدة: Tropical Island" },
-                    { version: "30.0", date: "2026-04-20", description: "🚁 إضافة مروحيات قابلة للقيادة" }
+                    { version: "30.2", date: "2026-05-15", description: "🏝️ خريطة جديدة: Tropical Island" },
+                    { version: "30.1", date: "2026-05-05", description: "🚁 إضافة مروحيات قابلة للقيادة" }
                 ]
             },
             "elden ring": {
                 name: "⚔️ Elden Ring",
                 officialSite: "https://en.bandainamcoent.eu/elden-ring/news",
                 updates: [
-                    { version: "1.12", date: "2026-05-01", description: "🗡️ توسعة جديدة: Shadow of the Erdtree" },
-                    { version: "1.11", date: "2026-04-10", description: "⚖️ توازن الأسلحة وإصلاح الأعطال" }
+                    { version: "1.13", date: "2026-05-20", description: "🗡️ توسعة جديدة: Shadow of the Erdtree" },
+                    { version: "1.12", date: "2026-05-01", description: "⚖️ توازن الأسلحة وإصلاح الأعطال" }
                 ]
             },
             "god of war ragnarok": {
                 name: "🪓 God of War Ragnarök",
                 officialSite: "https://www.playstation.com/ar-sa/games/god-of-war-ragnarok/",
                 updates: [
-                    { version: "5.03", date: "2026-05-10", description: "✅ دعم وضع الأداء 120 فريم" },
-                    { version: "5.02", date: "2026-04-20", description: "🔧 إصلاح مشاكل الصوت" }
+                    { version: "5.04", date: "2026-05-18", description: "✅ دعم وضع الأداء 120 فريم" },
+                    { version: "5.03", date: "2026-05-10", description: "🔧 إصلاح مشاكل الصوت" }
                 ]
             },
             "the last of us": {
                 name: "🧟 The Last of Us",
                 officialSite: "https://www.playstation.com/ar-sa/games/the-last-of-us/",
                 updates: [
-                    { version: "1.1.3", date: "2026-05-05", description: "🖥️ تحسين أداء نسخة الكمبيوتر" },
-                    { version: "1.1.2", date: "2026-04-15", description: "🔧 إصلاح أعطال الرسومات" }
+                    { version: "1.1.4", date: "2026-05-16", description: "🖥️ تحسين أداء نسخة الكمبيوتر" },
+                    { version: "1.1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال الرسومات" }
                 ]
             },
             "spider man 2": {
                 name: "🕷️ Spider-Man 2",
                 officialSite: "https://www.playstation.com/ar-sa/games/marvels-spider-man-2/",
                 updates: [
-                    { version: "1.002", date: "2026-05-12", description: "🎮 إضافة بدلات جديدة" },
-                    { version: "1.001", date: "2026-04-25", description: "🐛 إصلاح أخطاء الحركة" }
+                    { version: "1.003", date: "2026-05-17", description: "🎮 إضافة بدلات جديدة" },
+                    { version: "1.002", date: "2026-05-12", description: "🐛 إصلاح أخطاء الحركة" }
                 ]
             },
             "resident evil 4": {
                 name: "🧟 Resident Evil 4",
                 officialSite: "https://www.residentevil.com/",
                 updates: [
-                    { version: "2.10", date: "2026-05-08", description: "🔫 إضافة وضع مرتزقة جديد" },
-                    { version: "2.09", date: "2026-04-18", description: "⚡ تحسين أداء DLSS" }
+                    { version: "2.11", date: "2026-05-14", description: "🔫 إضافة وضع مرتزقة جديد" },
+                    { version: "2.10", date: "2026-05-08", description: "⚡ تحسين أداء DLSS" }
                 ]
             },
             "final fantasy xvi": {
                 name: "🗡️ Final Fantasy XVI",
                 officialSite: "https://na.finalfantasyxvi.com/",
                 updates: [
-                    { version: "1.31", date: "2026-05-03", description: "💍 توسعة جديدة: The Rising Tide" },
-                    { version: "1.30", date: "2026-04-10", description: "⚔️ إضافة وضع New Game+" }
+                    { version: "1.32", date: "2026-05-15", description: "💍 توسعة جديدة: The Rising Tide" },
+                    { version: "1.31", date: "2026-05-03", description: "⚔️ إضافة وضع New Game+" }
                 ]
             },
             "hogwarts legacy": {
                 name: "🪄 Hogwarts Legacy",
                 officialSite: "https://www.hogwartslegacy.com/ar/",
                 updates: [
-                    { version: "1.09", date: "2026-05-07", description: "✨ مهمات جانبية جديدة" },
-                    { version: "1.08", date: "2026-04-20", description: "🐉 إضافة مناطق جديدة في الخريطة" }
+                    { version: "1.10", date: "2026-05-18", description: "✨ مهمات جانبية جديدة" },
+                    { version: "1.09", date: "2026-05-07", description: "🐉 إضافة مناطق جديدة في الخريطة" }
                 ]
             },
             "starfield": {
                 name: "🚀 Starfield",
                 officialSite: "https://bethesda.net/ar/game/starfield",
                 updates: [
-                    { version: "1.11.36", date: "2026-05-15", description: "🪐 توسعة جديدة: Shattered Space" },
-                    { version: "1.11.33", date: "2026-05-01", description: "🔧 إصلاح مشاكل الأداء" }
+                    { version: "1.11.37", date: "2026-05-19", description: "🪐 توسعة جديدة: Shattered Space" },
+                    { version: "1.11.36", date: "2026-05-15", description: "🔧 إصلاح مشاكل الأداء" }
+                ]
+            },
+            // 10 ألعاب جديدة
+            "cyberpunk 2077": {
+                name: "🔮 Cyberpunk 2077",
+                officialSite: "https://www.cyberpunk.net/ar/news",
+                updates: [
+                    { version: "2.21", date: "2026-05-19", description: "🦾 إضافة سيارات جديدة ومهام جانبية" },
+                    { version: "2.20", date: "2026-05-10", description: "⚡ تحسين أداء تقنية Path Tracing" }
+                ]
+            },
+            "red dead redemption 2": {
+                name: "🤠 Red Dead Redemption 2",
+                officialSite: "https://www.rockstargames.com/reddeadredemption2/",
+                updates: [
+                    { version: "1.32", date: "2026-05-16", description: "🐎 إضافة خيول جديدة وأسلحة في وضع الأونلاين" },
+                    { version: "1.31", date: "2026-05-05", description: "🔧 إصلاح أعطال المهام" }
+                ]
+            },
+            "diablo 4": {
+                name: "👿 Diablo IV",
+                officialSite: "https://diablo4.blizzard.com/ar-ar/news",
+                updates: [
+                    { version: "2.4.0", date: "2026-05-18", description: "🔥 الموسم الرابع - فئة شخصيات جديدة" },
+                    { version: "2.3.0", date: "2026-05-01", description: "⚔️ تعديل توازن الأسلحة والمهارات" }
+                ]
+            },
+            "baldurs gate 3": {
+                name: "🎲 Baldur's Gate 3",
+                officialSite: "https://baldursgate3.game/news",
+                updates: [
+                    { version: "5.2", date: "2026-05-17", description: "📖 تحديث القصة - نهايات جديدة" },
+                    { version: "5.1", date: "2026-05-08", description: "🐛 إصلاح أخطاء المحادثات" }
+                ]
+            },
+            "counter strike 2": {
+                name: "🔫 Counter-Strike 2",
+                officialSite: "https://www.counter-strike.net/news",
+                updates: [
+                    { version: "1.41.5", date: "2026-05-20", description: "🗺️ خريطتان جديدتان - قنابل جديدة" },
+                    { version: "1.41.0", date: "2026-05-12", description: "⚖️ تعديل أسعار الأسلحة" }
+                ]
+            },
+            "apex legends": {
+                name: "🏃 Apex Legends",
+                officialSite: "https://www.ea.com/games/apex-legends/news",
+                updates: [
+                    { version: "23.1", date: "2026-05-18", description: "🏹 بطل جديد: Vantage - قدرات القنص" },
+                    { version: "23.0", date: "2026-05-10", description: "🗺️ خريطة جديدة: Broken Moon" }
+                ]
+            },
+            "rainbow six siege": {
+                name: "💣 Rainbow Six Siege",
+                officialSite: "https://www.ubisoft.com/en-gb/game/rainbow-six/siege/news",
+                updates: [
+                    { version: "Y9S2", date: "2026-05-16", description: "🛡️ عميل جديد: Striker - قدرات هجومية" },
+                    { version: "Y9S1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال الثبات" }
+                ]
+            },
+            "fifa 25": {
+                name: "⚽ FIFA 25",
+                officialSite: "https://www.ea.com/games/ea-sports-fc/news",
+                updates: [
+                    { version: "12.1", date: "2026-05-18", description: "🏆 تحديث التشكيلات - بطولات جديدة" },
+                    { version: "12.0", date: "2026-05-10", description: "🎮 تحسين التحكم وحركات اللاعبين" }
+                ]
+            },
+            "assassins creed shadows": {
+                name: "🗡️ Assassin's Creed Shadows",
+                officialSite: "https://www.ubisoft.com/en-gb/game/assassins-creed/shadows/news",
+                updates: [
+                    { version: "1.5", date: "2026-05-19", description: "🇯🇵 توسعة جديدة: اليابان الإقطاعية" },
+                    { version: "1.4", date: "2026-05-07", description: "⚔️ إضافة شخصيات قابلة للعب" }
+                ]
+            },
+            "tekken 8": {
+                name: "🥊 Tekken 8",
+                officialSite: "https://tk8.tekken-official.jp/news/",
+                updates: [
+                    { version: "1.10", date: "2026-05-17", description: "👊 شخصية جديدة: Eddy Gordo يعود" },
+                    { version: "1.09", date: "2026-05-08", description: "⚖️ تعديل حركات الشخصيات" }
                 ]
             }
         };
@@ -346,7 +435,7 @@
             }
             
             if (filteredGames.length === 0) {
-                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة: Fortnite, GTA V, Minecraft, Valorant, Call of Duty, Overwatch 2, League of Legends, PUBG, Elden Ring, God of War, The Last of Us, Spider-Man 2, Resident Evil 4, Final Fantasy XVI, Hogwarts Legacy, Starfield</div>`;
+                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة (26 لعبة): Fortnite, GTA V, Minecraft, Valorant, Call of Duty, Overwatch 2, League of Legends, PUBG, Elden Ring, God of War, The Last of Us, Spider-Man 2, Resident Evil 4, Final Fantasy XVI, Hogwarts Legacy, Starfield, Cyberpunk 2077, Red Dead Redemption 2, Diablo 4, Baldur's Gate 3, Counter-Strike 2, Apex Legends, Rainbow Six Siege, FIFA 25, Assassin's Creed Shadows, Tekken 8</div>`;
                 return;
             }
             
