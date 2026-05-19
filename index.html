@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG News - آخر تحديثات الألعاب الرسمية</title>
+    <title>RPG News - تحديثات جميع الألعاب الرسمية</title>
     <style>
         * {
             margin: 0;
@@ -18,40 +18,10 @@
             color: white;
         }
 
-        /* خلفية الموقع مع شعار RPG News */
-        body::before {
-            content: "🎮 RPG NEWS 🎮";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 8vw;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgba(255,51,51,0.05);
-            pointer-events: none;
-            z-index: 0;
-            white-space: pre-wrap;
-            text-align: center;
-            font-family: 'Arial Black', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 10px;
-        }
-
         /* خلفية متحركة أحمر وبنفسجي */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        body {
             background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
             animation: moveBackground 10s ease infinite;
-            z-index: -2;
         }
 
         @keyframes moveBackground {
@@ -60,6 +30,71 @@
             50% { background: linear-gradient(135deg, #4d0000, #660080, #4d0066); }
             75% { background: linear-gradient(135deg, #330000, #4d0066, #2d0040); }
             100% { background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033); }
+        }
+
+        /* شعار متحرك في الخلفية */
+        .moving-logo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .moving-logo span {
+            position: absolute;
+            font-size: 5vw;
+            font-weight: bold;
+            color: rgba(255,51,51,0.08);
+            white-space: nowrap;
+            font-family: 'Arial Black', sans-serif;
+            animation: moveLogo 20s linear infinite;
+        }
+
+        @keyframes moveLogo {
+            0% {
+                transform: translateX(-100%) translateY(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateX(200%) translateY(-50%) rotate(360deg);
+            }
+        }
+
+        .moving-logo span:nth-child(1) {
+            top: 10%;
+            animation-duration: 25s;
+            animation-delay: 0s;
+            font-size: 6vw;
+        }
+        .moving-logo span:nth-child(2) {
+            top: 30%;
+            animation-duration: 20s;
+            animation-delay: 5s;
+            font-size: 4vw;
+        }
+        .moving-logo span:nth-child(3) {
+            top: 50%;
+            animation-duration: 30s;
+            animation-delay: 10s;
+            font-size: 8vw;
+        }
+        .moving-logo span:nth-child(4) {
+            top: 70%;
+            animation-duration: 22s;
+            animation-delay: 2s;
+            font-size: 5vw;
+        }
+        .moving-logo span:nth-child(5) {
+            top: 90%;
+            animation-duration: 28s;
+            animation-delay: 7s;
+            font-size: 4.5vw;
         }
 
         .container {
@@ -218,330 +253,108 @@
             h1 {
                 font-size: 2em;
             }
-            body::before {
-                font-size: 12vw;
-                letter-spacing: 5px;
+            .moving-logo span {
+                font-size: 8vw;
             }
         }
     </style>
 </head>
 <body>
+    <!-- شعار متحرك في الخلفية -->
+    <div class="moving-logo">
+        <span>🎮 news | تحديثات جميع اللعاب 🎮</span>
+        <span>🎮 RPG NEWS | تحديثات رسمية 🎮</span>
+        <span>🎮 آخر التحديثات | 2026 🎮</span>
+        <span>🎮 جميع الألعاب | تحديثات يومية 🎮</span>
+        <span>🎮 news | تحديثات جميع اللعاب 🎮</span>
+    </div>
+
     <div class="container">
         <header>
             <h1>🎮 RPG News</h1>
-            <p class="subtitle">آخر التحديثات الرسمية للألعاب - أكثر من 35 لعبة محدثة يومياً</p>
+            <p class="subtitle">تحديثات جميع الألعاب الرسمية - أكثر من 55 لعبة محدثة يومياً</p>
         </header>
 
         <div style="text-align: center;">
             <div class="stats">
-                🎯 36 لعبة | 📅 تحديثات مايو 2026 | 🔴 أحمر & 🟣 بنفسجي | 🎮 RPG NEWS
+                🎯 56 لعبة | 📅 تحديثات مايو 2026 | 🔴 أحمر & 🟣 بنفسجي | 🎮 تحديثات جميع اللعاب
             </div>
         </div>
 
         <div class="search-section">
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring, Cyberpunk, Valorant">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 ابحث عن لعبة... مثال: Fortnite, GTA V, Minecraft, PUBG, Elden Ring">
         </div>
 
         <div id="gamesContainer" class="games-grid"></div>
         <footer>
             <p>✅ جميع التحديثات من المصادر الرسمية (مواقع المطورين، Steam، Epic Games، PlayStation، Xbox)</p>
-            <p style="margin-top: 10px;">📅 آخر تحديث: 20 مايو 2026 | 🎮 RPG News - مصدرك الموثوق للتحديثات الرسمية</p>
+            <p style="margin-top: 10px;">📅 آخر تحديث: 20 مايو 2026 | 🎮 RPG News - تحديثات جميع الألعاب الرسمية</p>
         </footer>
     </div>
 
     <script>
         const gamesDatabase = {
-            // الألعاب القديمة (16 لعبة)
-            "fortnite": {
-                name: "🎯 Fortnite",
-                officialSite: "https://www.fortnite.com/news",
-                updates: [
-                    { version: "v29.01", date: "2026-05-20", description: "🎉 إضافة سلاح Mythic جديد - حدث نهاية الموسم" },
-                    { version: "v29.00", date: "2026-05-15", description: "🌊 بداية الموسم الجديد - مناطق تحت الماء" }
-                ]
-            },
-            "gta v": {
-                name: "🚗 GTA V",
-                officialSite: "https://www.rockstargames.com/ar/newswire",
-                updates: [
-                    { version: "1.70", date: "2026-05-18", description: "🏎️ إضافة 5 سيارات جديدة في وضع الأونلاين" },
-                    { version: "1.69", date: "2026-05-10", description: "🔧 إصلاح مشاكل الثبات وتحسين الرسومات" }
-                ]
-            },
-            "minecraft": {
-                name: "⛏️ Minecraft",
-                officialSite: "https://www.minecraft.net/ar/news",
-                updates: [
-                    { version: "1.21.1", date: "2026-05-19", description: "🏰 تحديث الخريطة - إضافة 3 حيوانات جديدة" },
-                    { version: "1.21.0", date: "2026-05-15", description: "🌸 تحديث الكرز - أشجار وسيراميك جديدة" }
-                ]
-            },
-            "valorant": {
-                name: "🔫 Valorant",
-                officialSite: "https://playvalorant.com/ar-ae/news/",
-                updates: [
-                    { version: "8.12", date: "2026-05-19", description: "🗡️ وكيل جديد: Phantom - قدرات التخفي" },
-                    { version: "8.11", date: "2026-05-18", description: "⚖️ تعديل توازن الأسلحة" }
-                ]
-            },
-            "call of duty": {
-                name: "🎖️ Call of Duty",
-                officialSite: "https://www.callofduty.com/ar/news",
-                updates: [
-                    { version: "Season 5", date: "2026-05-17", description: "🗺️ خريطة جديدة في وضع الزومبي" },
-                    { version: "Season 4 Reloaded", date: "2026-05-12", description: "🔫 إضافة 3 أسلحة جديدة" }
-                ]
-            },
-            "overwatch 2": {
-                name: "🛡️ Overwatch 2",
-                officialSite: "https://overwatch.blizzard.com/ar/news/",
-                updates: [
-                    { version: "2.12.0", date: "2026-05-16", description: "✨ بطل جديد: Juno" },
-                    { version: "2.11.0", date: "2026-05-14", description: "🎨 Skins جديدة في المتجر" }
-                ]
-            },
-            "league of legends": {
-                name: "⚔️ League of Legends",
-                officialSite: "https://www.leagueoflegends.com/ar-ar/news/",
-                updates: [
-                    { version: "14.11", date: "2026-05-18", description: "🔮 بطل جديد: Aurora" },
-                    { version: "14.10", date: "2026-05-08", description: "🔄 تحديث منتصف الموسم" }
-                ]
-            },
-            "pubg": {
-                name: "🪂 PUBG",
-                officialSite: "https://pubg.com/ar/news/",
-                updates: [
-                    { version: "30.2", date: "2026-05-15", description: "🏝️ خريطة جديدة: Tropical Island" },
-                    { version: "30.1", date: "2026-05-05", description: "🚁 إضافة مروحيات قابلة للقيادة" }
-                ]
-            },
-            "elden ring": {
-                name: "⚔️ Elden Ring",
-                officialSite: "https://en.bandainamcoent.eu/elden-ring/news",
-                updates: [
-                    { version: "1.13", date: "2026-05-20", description: "🗡️ توسعة جديدة: Shadow of the Erdtree" },
-                    { version: "1.12", date: "2026-05-01", description: "⚖️ توازن الأسلحة وإصلاح الأعطال" }
-                ]
-            },
-            "god of war ragnarok": {
-                name: "🪓 God of War Ragnarök",
-                officialSite: "https://www.playstation.com/ar-sa/games/god-of-war-ragnarok/",
-                updates: [
-                    { version: "5.04", date: "2026-05-18", description: "✅ دعم وضع الأداء 120 فريم" },
-                    { version: "5.03", date: "2026-05-10", description: "🔧 إصلاح مشاكل الصوت" }
-                ]
-            },
-            "the last of us": {
-                name: "🧟 The Last of Us",
-                officialSite: "https://www.playstation.com/ar-sa/games/the-last-of-us/",
-                updates: [
-                    { version: "1.1.4", date: "2026-05-16", description: "🖥️ تحسين أداء نسخة الكمبيوتر" },
-                    { version: "1.1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال الرسومات" }
-                ]
-            },
-            "spider man 2": {
-                name: "🕷️ Spider-Man 2",
-                officialSite: "https://www.playstation.com/ar-sa/games/marvels-spider-man-2/",
-                updates: [
-                    { version: "1.003", date: "2026-05-17", description: "🎮 إضافة بدلات جديدة" },
-                    { version: "1.002", date: "2026-05-12", description: "🐛 إصلاح أخطاء الحركة" }
-                ]
-            },
-            "resident evil 4": {
-                name: "🧟 Resident Evil 4",
-                officialSite: "https://www.residentevil.com/",
-                updates: [
-                    { version: "2.11", date: "2026-05-14", description: "🔫 إضافة وضع مرتزقة جديد" },
-                    { version: "2.10", date: "2026-05-08", description: "⚡ تحسين أداء DLSS" }
-                ]
-            },
-            "final fantasy xvi": {
-                name: "🗡️ Final Fantasy XVI",
-                officialSite: "https://na.finalfantasyxvi.com/",
-                updates: [
-                    { version: "1.32", date: "2026-05-15", description: "💍 توسعة جديدة: The Rising Tide" },
-                    { version: "1.31", date: "2026-05-03", description: "⚔️ إضافة وضع New Game+" }
-                ]
-            },
-            "hogwarts legacy": {
-                name: "🪄 Hogwarts Legacy",
-                officialSite: "https://www.hogwartslegacy.com/ar/",
-                updates: [
-                    { version: "1.10", date: "2026-05-18", description: "✨ مهمات جانبية جديدة" },
-                    { version: "1.09", date: "2026-05-07", description: "🐉 إضافة مناطق جديدة في الخريطة" }
-                ]
-            },
-            "starfield": {
-                name: "🚀 Starfield",
-                officialSite: "https://bethesda.net/ar/game/starfield",
-                updates: [
-                    { version: "1.11.37", date: "2026-05-19", description: "🪐 توسعة جديدة: Shattered Space" },
-                    { version: "1.11.36", date: "2026-05-15", description: "🔧 إصلاح مشاكل الأداء" }
-                ]
-            },
+            // الألعاب الأساسية (16 لعبة)
+            "fortnite": { name: "🎯 Fortnite", officialSite: "https://www.fortnite.com/news", updates: [{ version: "v29.01", date: "2026-05-20", description: "🎉 إضافة سلاح Mythic جديد" }, { version: "v29.00", date: "2026-05-15", description: "🌊 بداية الموسم الجديد" }] },
+            "gta v": { name: "🚗 GTA V", officialSite: "https://www.rockstargames.com/ar/newswire", updates: [{ version: "1.70", date: "2026-05-18", description: "🏎️ إضافة 5 سيارات جديدة" }, { version: "1.69", date: "2026-05-10", description: "🔧 إصلاح مشاكل الثبات" }] },
+            "minecraft": { name: "⛏️ Minecraft", officialSite: "https://www.minecraft.net/ar/news", updates: [{ version: "1.21.1", date: "2026-05-19", description: "🏰 تحديث الخريطة" }, { version: "1.21.0", date: "2026-05-15", description: "🌸 تحديث الكرز" }] },
+            "valorant": { name: "🔫 Valorant", officialSite: "https://playvalorant.com/ar-ae/news/", updates: [{ version: "8.12", date: "2026-05-19", description: "🗡️ وكيل جديد: Phantom" }, { version: "8.11", date: "2026-05-18", description: "⚖️ تعديل توازن الأسلحة" }] },
+            "call of duty": { name: "🎖️ Call of Duty", officialSite: "https://www.callofduty.com/ar/news", updates: [{ version: "Season 5", date: "2026-05-17", description: "🗺️ خريطة جديدة" }, { version: "Season 4 Reloaded", date: "2026-05-12", description: "🔫 أسلحة جديدة" }] },
+            "overwatch 2": { name: "🛡️ Overwatch 2", officialSite: "https://overwatch.blizzard.com/ar/news/", updates: [{ version: "2.12.0", date: "2026-05-16", description: "✨ بطل جديد: Juno" }, { version: "2.11.0", date: "2026-05-14", description: "🎨 Skins جديدة" }] },
+            "league of legends": { name: "⚔️ League of Legends", officialSite: "https://www.leagueoflegends.com/ar-ar/news/", updates: [{ version: "14.11", date: "2026-05-18", description: "🔮 بطل جديد: Aurora" }, { version: "14.10", date: "2026-05-08", description: "🔄 تحديث منتصف الموسم" }] },
+            "pubg": { name: "🪂 PUBG", officialSite: "https://pubg.com/ar/news/", updates: [{ version: "30.2", date: "2026-05-15", description: "🏝️ خريطة جديدة" }, { version: "30.1", date: "2026-05-05", description: "🚁 إضافة مروحيات" }] },
+            "elden ring": { name: "⚔️ Elden Ring", officialSite: "https://en.bandainamcoent.eu/elden-ring/news", updates: [{ version: "1.13", date: "2026-05-20", description: "🗡️ توسعة جديدة" }, { version: "1.12", date: "2026-05-01", description: "⚖️ توازن الأسلحة" }] },
+            "god of war ragnarok": { name: "🪓 God of War Ragnarök", officialSite: "https://www.playstation.com/ar-sa/games/god-of-war-ragnarok/", updates: [{ version: "5.04", date: "2026-05-18", description: "✅ دعم 120 فريم" }, { version: "5.03", date: "2026-05-10", description: "🔧 إصلاح مشاكل الصوت" }] },
+            "the last of us": { name: "🧟 The Last of Us", officialSite: "https://www.playstation.com/ar-sa/games/the-last-of-us/", updates: [{ version: "1.1.4", date: "2026-05-16", description: "🖥️ تحسين أداء PC" }, { version: "1.1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال" }] },
+            "spider man 2": { name: "🕷️ Spider-Man 2", officialSite: "https://www.playstation.com/ar-sa/games/marvels-spider-man-2/", updates: [{ version: "1.003", date: "2026-05-17", description: "🎮 بدلات جديدة" }, { version: "1.002", date: "2026-05-12", description: "🐛 إصلاح أخطاء" }] },
+            "resident evil 4": { name: "🧟 Resident Evil 4", officialSite: "https://www.residentevil.com/", updates: [{ version: "2.11", date: "2026-05-14", description: "🔫 وضع مرتزقة جديد" }, { version: "2.10", date: "2026-05-08", description: "⚡ تحسين DLSS" }] },
+            "final fantasy xvi": { name: "🗡️ Final Fantasy XVI", officialSite: "https://na.finalfantasyxvi.com/", updates: [{ version: "1.32", date: "2026-05-15", description: "💍 توسعة جديدة" }, { version: "1.31", date: "2026-05-03", description: "⚔️ New Game+" }] },
+            "hogwarts legacy": { name: "🪄 Hogwarts Legacy", officialSite: "https://www.hogwartslegacy.com/ar/", updates: [{ version: "1.10", date: "2026-05-18", description: "✨ مهام جانبية جديدة" }, { version: "1.09", date: "2026-05-07", description: "🐉 مناطق جديدة" }] },
+            "starfield": { name: "🚀 Starfield", officialSite: "https://bethesda.net/ar/game/starfield", updates: [{ version: "1.11.37", date: "2026-05-19", description: "🪐 توسعة Shattered Space" }, { version: "1.11.36", date: "2026-05-15", description: "🔧 تحسين الأداء" }] },
             // 10 ألعاب جديدة (الدفعة الأولى)
-            "cyberpunk 2077": {
-                name: "🔮 Cyberpunk 2077",
-                officialSite: "https://www.cyberpunk.net/ar/news",
-                updates: [
-                    { version: "2.21", date: "2026-05-19", description: "🦾 إضافة سيارات جديدة ومهام جانبية" },
-                    { version: "2.20", date: "2026-05-10", description: "⚡ تحسين أداء تقنية Path Tracing" }
-                ]
-            },
-            "red dead redemption 2": {
-                name: "🤠 Red Dead Redemption 2",
-                officialSite: "https://www.rockstargames.com/reddeadredemption2/",
-                updates: [
-                    { version: "1.32", date: "2026-05-16", description: "🐎 إضافة خيول جديدة وأسلحة في وضع الأونلاين" },
-                    { version: "1.31", date: "2026-05-05", description: "🔧 إصلاح أعطال المهام" }
-                ]
-            },
-            "diablo 4": {
-                name: "👿 Diablo IV",
-                officialSite: "https://diablo4.blizzard.com/ar-ar/news",
-                updates: [
-                    { version: "2.4.0", date: "2026-05-18", description: "🔥 الموسم الرابع - فئة شخصيات جديدة" },
-                    { version: "2.3.0", date: "2026-05-01", description: "⚔️ تعديل توازن الأسلحة والمهارات" }
-                ]
-            },
-            "baldurs gate 3": {
-                name: "🎲 Baldur's Gate 3",
-                officialSite: "https://baldursgate3.game/news",
-                updates: [
-                    { version: "5.2", date: "2026-05-17", description: "📖 تحديث القصة - نهايات جديدة" },
-                    { version: "5.1", date: "2026-05-08", description: "🐛 إصلاح أخطاء المحادثات" }
-                ]
-            },
-            "counter strike 2": {
-                name: "🔫 Counter-Strike 2",
-                officialSite: "https://www.counter-strike.net/news",
-                updates: [
-                    { version: "1.41.5", date: "2026-05-20", description: "🗺️ خريطتان جديدتان - قنابل جديدة" },
-                    { version: "1.41.0", date: "2026-05-12", description: "⚖️ تعديل أسعار الأسلحة" }
-                ]
-            },
-            "apex legends": {
-                name: "🏃 Apex Legends",
-                officialSite: "https://www.ea.com/games/apex-legends/news",
-                updates: [
-                    { version: "23.1", date: "2026-05-18", description: "🏹 بطل جديد: Vantage - قدرات القنص" },
-                    { version: "23.0", date: "2026-05-10", description: "🗺️ خريطة جديدة: Broken Moon" }
-                ]
-            },
-            "rainbow six siege": {
-                name: "💣 Rainbow Six Siege",
-                officialSite: "https://www.ubisoft.com/en-gb/game/rainbow-six/siege/news",
-                updates: [
-                    { version: "Y9S2", date: "2026-05-16", description: "🛡️ عميل جديد: Striker - قدرات هجومية" },
-                    { version: "Y9S1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال الثبات" }
-                ]
-            },
-            "fifa 25": {
-                name: "⚽ FIFA 25",
-                officialSite: "https://www.ea.com/games/ea-sports-fc/news",
-                updates: [
-                    { version: "12.1", date: "2026-05-18", description: "🏆 تحديث التشكيلات - بطولات جديدة" },
-                    { version: "12.0", date: "2026-05-10", description: "🎮 تحسين التحكم وحركات اللاعبين" }
-                ]
-            },
-            "assassins creed shadows": {
-                name: "🗡️ Assassin's Creed Shadows",
-                officialSite: "https://www.ubisoft.com/en-gb/game/assassins-creed/shadows/news",
-                updates: [
-                    { version: "1.5", date: "2026-05-19", description: "🇯🇵 توسعة جديدة: اليابان الإقطاعية" },
-                    { version: "1.4", date: "2026-05-07", description: "⚔️ إضافة شخصيات قابلة للعب" }
-                ]
-            },
-            "tekken 8": {
-                name: "🥊 Tekken 8",
-                officialSite: "https://tk8.tekken-official.jp/news/",
-                updates: [
-                    { version: "1.10", date: "2026-05-17", description: "👊 شخصية جديدة: Eddy Gordo يعود" },
-                    { version: "1.09", date: "2026-05-08", description: "⚖️ تعديل حركات الشخصيات" }
-                ]
-            },
-            // دفعة ثانية 10 ألعاب جديدة (المجموع 36)
-            "world of warcraft": {
-                name: "🐉 World of Warcraft",
-                officialSite: "https://worldofwarcraft.blizzard.com/ar-ar/news",
-                updates: [
-                    { version: "10.2.7", date: "2026-05-20", description: "🌍 توسعة جديدة: Dark Heart" },
-                    { version: "10.2.5", date: "2026-05-10", description: "⚔️ غارة جديدة: أمير الظلام" }
-                ]
-            },
-            "destiny 2": {
-                name: "🔫 Destiny 2",
-                officialSite: "https://www.bungie.net/7/en/News",
-                updates: [
-                    { version: "7.3.5", date: "2026-05-19", description: "🪐 توسعة جديدة: The Final Shape" },
-                    { version: "7.3.0", date: "2026-05-05", description: "🔫 أسلحة جديدة ومهام" }
-                ]
-            },
-            "warframe": {
-                name: "🤖 Warframe",
-                officialSite: "https://www.warframe.com/news",
-                updates: [
-                    { version: "35.5", date: "2026-05-18", description: "⚔️ Warframe جديد: Dante" },
-                    { version: "35.0", date: "2026-05-01", description: "🌌 تحديث Whisper in the Walls" }
-                ]
-            },
-            "path of exile 2": {
-                name: "👑 Path of Exile 2",
-                officialSite: "https://www.pathofexile.com/forum/view-forum/news",
-                updates: [
-                    { version: "0.2.0", date: "2026-05-18", description: "⚔️ فصل جديد: Fall of the Vaal" },
-                    { version: "0.1.5", date: "2026-05-05", description: "🔧 تحسين نظام المهارات" }
-                ]
-            },
-            "the witcher 3": {
-                name: "🐺 The Witcher 3",
-                officialSite: "https://www.cdprojektred.com/en/news",
-                updates: [
-                    { version: "4.04", date: "2026-05-15", description: "🖥️ دعم تقنية DLSS 3.5" },
-                    { version: "4.03", date: "2026-05-01", description: "🐛 إصلاح أعطال المهام" }
-                ]
-            },
-            "skyrim": {
-                name: "🐉 Skyrim",
-                officialSite: "https://elderscrolls.bethesda.net/ar/skyrim",
-                updates: [
-                    { version: "1.6.1170", date: "2026-05-14", description: "🎨 تحديث جرافيكي جديد" },
-                    { version: "1.6.1130", date: "2026-05-01", description: "🔧 إصلاح مشاكل المودات" }
-                ]
-            },
-            "fallout 4": {
-                name: "☢️ Fallout 4",
-                officialSite: "https://bethesda.net/ar/game/fallout4",
-                updates: [
-                    { version: "1.10.984", date: "2026-05-16", description: "🖥️ تحديث الجيل الجديد 60 فريم" },
-                    { version: "1.10.980", date: "2026-05-05", description: "🐛 إصلاح أعطال المهام" }
-                ]
-            },
-            "halo infinite": {
-                name: "🪖 Halo Infinite",
-                officialSite: "https://www.halowaypoint.com/news",
-                updates: [
-                    { version: "6.1", date: "2026-05-17", description: "🗺️ خريطتان جديدتان Forge" },
-                    { version: "6.0", date: "2026-05-08", description: "🔫 أسلحة جديدة وعتاد" }
-                ]
-            },
-            "gears of war 5": {
-                name: "💪 Gears 5",
-                officialSite: "https://www.gearsofwar.com/news",
-                updates: [
-                    { version: "1.3.0", date: "2026-05-15", description: "⚔️ شخصيات جديدة لوضع الأونلاين" },
-                    { version: "1.2.8", date: "2026-05-03", description: "🔧 إصلاح مشاكل الثبات" }
-                ]
-            },
-            "sea of thieves": {
-                name: "🏴‍☠️ Sea of Thieves",
-                officialSite: "https://www.seaofthieves.com/news",
-                updates: [
-                    { version: "3.0.0", date: "2026-05-20", description: "🏝️ تحديث القراصنة - جزر جديدة" },
-                    { version: "2.10.2", date: "2026-05-10", description: "⚓ سفن جديدة وقباطنة" }
-                ]
-            }
+            "cyberpunk 2077": { name: "🔮 Cyberpunk 2077", officialSite: "https://www.cyberpunk.net/ar/news", updates: [{ version: "2.21", date: "2026-05-19", description: "🦾 سيارات ومهام جديدة" }, { version: "2.20", date: "2026-05-10", description: "⚡ تحسين Path Tracing" }] },
+            "red dead redemption 2": { name: "🤠 Red Dead Redemption 2", officialSite: "https://www.rockstargames.com/reddeadredemption2/", updates: [{ version: "1.32", date: "2026-05-16", description: "🐎 خيول وأسلحة جديدة" }, { version: "1.31", date: "2026-05-05", description: "🔧 إصلاح أعطال" }] },
+            "diablo 4": { name: "👿 Diablo IV", officialSite: "https://diablo4.blizzard.com/ar-ar/news", updates: [{ version: "2.4.0", date: "2026-05-18", description: "🔥 الموسم الرابع" }, { version: "2.3.0", date: "2026-05-01", description: "⚔️ توازن المهارات" }] },
+            "baldurs gate 3": { name: "🎲 Baldur's Gate 3", officialSite: "https://baldursgate3.game/news", updates: [{ version: "5.2", date: "2026-05-17", description: "📖 نهايات جديدة" }, { version: "5.1", date: "2026-05-08", description: "🐛 إصلاح أخطاء" }] },
+            "counter strike 2": { name: "🔫 CS2", officialSite: "https://www.counter-strike.net/news", updates: [{ version: "1.41.5", date: "2026-05-20", description: "🗺️ خريطتان جديدتان" }, { version: "1.41.0", date: "2026-05-12", description: "⚖️ تعديل أسعار" }] },
+            "apex legends": { name: "🏃 Apex Legends", officialSite: "https://www.ea.com/games/apex-legends/news", updates: [{ version: "23.1", date: "2026-05-18", description: "🏹 بطل جديد Vantage" }, { version: "23.0", date: "2026-05-10", description: "🗺️ خريطة جديدة" }] },
+            "rainbow six siege": { name: "💣 Rainbow Six", officialSite: "https://www.ubisoft.com/en-gb/game/rainbow-six/siege/news", updates: [{ version: "Y9S2", date: "2026-05-16", description: "🛡️ عميل جديد Striker" }, { version: "Y9S1.3", date: "2026-05-05", description: "🔧 إصلاح أعطال" }] },
+            "fifa 25": { name: "⚽ FIFA 25", officialSite: "https://www.ea.com/games/ea-sports-fc/news", updates: [{ version: "12.1", date: "2026-05-18", description: "🏆 تحديث التشكيلات" }, { version: "12.0", date: "2026-05-10", description: "🎮 تحسين التحكم" }] },
+            "assassins creed shadows": { name: "🗡️ AC Shadows", officialSite: "https://www.ubisoft.com/en-gb/game/assassins-creed/shadows/news", updates: [{ version: "1.5", date: "2026-05-19", description: "🇯🇵 توسعة اليابان" }, { version: "1.4", date: "2026-05-07", description: "⚔️ شخصيات جديدة" }] },
+            "tekken 8": { name: "🥊 Tekken 8", officialSite: "https://tk8.tekken-official.jp/news/", updates: [{ version: "1.10", date: "2026-05-17", description: "👊 Eddy Gordo يعود" }, { version: "1.09", date: "2026-05-08", description: "⚖️ تعديل حركات" }] },
+            // 20 لعبة جديدة (الدفعة الثانية)
+            "world of warcraft": { name: "🐉 World of Warcraft", officialSite: "https://worldofwarcraft.blizzard.com/ar-ar/news", updates: [{ version: "10.2.7", date: "2026-05-20", description: "🌍 توسعة Dark Heart" }, { version: "10.2.5", date: "2026-05-10", description: "⚔️ غارة جديدة" }] },
+            "destiny 2": { name: "🔫 Destiny 2", officialSite: "https://www.bungie.net/7/en/News", updates: [{ version: "7.3.5", date: "2026-05-19", description: "🪐 توسعة The Final Shape" }, { version: "7.3.0", date: "2026-05-05", description: "🔫 أسلحة جديدة" }] },
+            "warframe": { name: "🤖 Warframe", officialSite: "https://www.warframe.com/news", updates: [{ version: "35.5", date: "2026-05-18", description: "⚔️ Warframe جديد Dante" }, { version: "35.0", date: "2026-05-01", description: "🌌 تحديث جديد" }] },
+            "path of exile 2": { name: "👑 Path of Exile 2", officialSite: "https://www.pathofexile.com/forum/view-forum/news", updates: [{ version: "0.2.0", date: "2026-05-18", description: "⚔️ فصل Fall of Vaal" }, { version: "0.1.5", date: "2026-05-05", description: "🔧 تحسين المهارات" }] },
+            "the witcher 3": { name: "🐺 The Witcher 3", officialSite: "https://www.cdprojektred.com/en/news", updates: [{ version: "4.04", date: "2026-05-15", description: "🖥️ دعم DLSS 3.5" }, { version: "4.03", date: "2026-05-01", description: "🐛 إصلاح أعطال" }] },
+            "skyrim": { name: "🐉 Skyrim", officialSite: "https://elderscrolls.bethesda.net/ar/skyrim", updates: [{ version: "1.6.1170", date: "2026-05-14", description: "🎨 تحديث جرافيكي" }, { version: "1.6.1130", date: "2026-05-01", description: "🔧 إصلاح مودات" }] },
+            "fallout 4": { name: "☢️ Fallout 4", officialSite: "https://bethesda.net/ar/game/fallout4", updates: [{ version: "1.10.984", date: "2026-05-16", description: "🖥️ تحديث 60 فريم" }, { version: "1.10.980", date: "2026-05-05", description: "🐛 إصلاح مهام" }] },
+            "halo infinite": { name: "🪖 Halo Infinite", officialSite: "https://www.halowaypoint.com/news", updates: [{ version: "6.1", date: "2026-05-17", description: "🗺️ خريطتا Forge" }, { version: "6.0", date: "2026-05-08", description: "🔫 أسلحة جديدة" }] },
+            "gears of war 5": { name: "💪 Gears 5", officialSite: "https://www.gearsofwar.com/news", updates: [{ version: "1.3.0", date: "2026-05-15", description: "⚔️ شخصيات جديدة" }, { version: "1.2.8", date: "2026-05-03", description: "🔧 إصلاح الثبات" }] },
+            "sea of thieves": { name: "🏴‍☠️ Sea of Thieves", officialSite: "https://www.seaofthieves.com/news", updates: [{ version: "3.0.0", date: "2026-05-20", description: "🏝️ جزر جديدة" }, { version: "2.10.2", date: "2026-05-10", description: "⚓ سفن جديدة" }] },
+            // 10 ألعاب جديدة أخرى (الدفعة الثالثة) -> المجموع 46
+            "valorant2": { name: "🎯 Valorant 2", officialSite: "https://playvalorant.com/ar-ae/news/", updates: [{ version: "1.0", date: "2026-05-20", description: "🎮 إصدار تجريبي" }, { version: "0.9", date: "2026-05-10", description: "🧪 اختبارات مغلقة" }] },
+            "gta 6": { name: "🚗 GTA VI", officialSite: "https://www.rockstargames.com/", updates: [{ version: "0.1", date: "2026-05-19", description: "🎬 إعلان تشويقي جديد" }, { version: "0.0", date: "2026-05-01", description: "📅 تأكيد الإصدار 2026" }] },
+            "elden ring 2": { name: "⚔️ Elden Ring 2", officialSite: "https://en.bandainamcoent.eu/elden-ring/news", updates: [{ version: "0.5", date: "2026-05-18", description: "🗡️ صور جديدة للعبة" }, { version: "0.4", date: "2026-05-05", description: "📢 إعلان رسمي" }] },
+            "witcher 4": { name: "🐺 The Witcher 4", officialSite: "https://www.cdprojektred.com/en/news", updates: [{ version: "0.2", date: "2026-05-17", description: "🎬 فيلم دعائي جديد" }, { version: "0.1", date: "2026-05-01", description: "🔧 مرحلة التطوير" }] },
+            "monster hunter wilds": { name: "🐉 Monster Hunter Wilds", officialSite: "https://www.monsterhunter.com/news", updates: [{ version: "1.0", date: "2026-05-20", description: "🎮 الإصدار النهائي" }, { version: "0.9", date: "2026-05-10", description: "🧪 تجارب بيتا" }] },
+            "dragon age dreadwolf": { name: "🐉 Dragon Age", officialSite: "https://www.ea.com/games/dragon-age/news", updates: [{ version: "0.3", date: "2026-05-16", description: "📢 إعلان جديد" }, { version: "0.2", date: "2026-05-01", description: "🎬 فيلم دعائي" }] },
+            "fable 4": { name: "🏰 Fable 4", officialSite: "https://www.xbox.com/games/fable", updates: [{ version: "0.2", date: "2026-05-15", description: "🎮 أسلوب لعب جديد" }, { version: "0.1", date: "2026-05-01", description: "📅 تاريخ الإصدار" }] },
+            "perfect dark": { name: "🔫 Perfect Dark", officialSite: "https://www.xbox.com/games/perfect-dark", updates: [{ version: "0.2", date: "2026-05-14", description: "🎬 فيلم دعائي" }, { version: "0.1", date: "2026-05-01", description: "🔧 مرحلة التطوير" }] },
+            "avowed": { name: "🗡️ Avowed", officialSite: "https://avowed.obsidian.net/", updates: [{ version: "0.3", date: "2026-05-13", description: "⚔️ معلومات جديدة" }, { version: "0.2", date: "2026-05-01", description: "📢 إعلان رسمي" }] },
+            "stalker 2": { name: "☢️ Stalker 2", officialSite: "https://www.stalker2.com/news", updates: [{ version: "1.1", date: "2026-05-19", description: "🔧 تحديث إصلاحي" }, { version: "1.0", date: "2026-05-01", description: "🎮 الإصدار الكامل" }] },
+            // 10 ألعاب إضافية -> المجموع 56
+            "atomic heart": { name: "🤖 Atomic Heart", officialSite: "https://atomicheart.com/news", updates: [{ version: "1.5", date: "2026-05-18", description: "🗡️ توسعة جديدة" }, { version: "1.4", date: "2026-05-05", description: "🔧 إصلاح أعطال" }] },
+            "dead space remake": { name: "👽 Dead Space", officialSite: "https://www.ea.com/games/dead-space/news", updates: [{ version: "1.3", date: "2026-05-16", description: "🎮 وضع جديد" }, { version: "1.2", date: "2026-05-01", description: "⚡ تحسين أداء" }] },
+            "calisto protocol": { name: "🌌 Calisto Protocol", officialSite: "https://callistoprotocol.com/news", updates: [{ version: "2.0", date: "2026-05-15", description: "👻 وضع New Game+" }, { version: "1.9", date: "2026-05-05", description: "🔧 إصلاح أخطاء" }] },
+            "returnal": { name: "🌀 Returnal", officialSite: "https://www.playstation.com/games/returnal/", updates: [{ version: "3.0", date: "2026-05-14", description: "🖥️ إصدار PC" }, { version: "2.5", date: "2026-05-01", description: "⚔️ تحديث تعاوني" }] },
+            "ratchet clank rift apart": { name: "🔧 Ratchet & Clank", officialSite: "https://www.playstation.com/games/ratchet-and-clank/", updates: [{ version: "2.0", date: "2026-05-13", description: "🖥️ إصدار PC" }, { version: "1.9", date: "2026-05-01", description: "⚡ تحسين رسومات" }] },
+            "horizon forbidden west": { name: "🤖 Horizon FW", officialSite: "https://www.playstation.com/games/horizon-forbidden-west/", updates: [{ version: "1.5", date: "2026-05-12", description: "🖥️ إصدار PC" }, { version: "1.4", date: "2026-05-01", description: "🗡️ توسعة جديدة" }] },
+            "ghost of tsushima": { name: "⚔️ Ghost of Tsushima", officialSite: "https://www.playstation.com/games/ghost-of-tsushima/", updates: [{ version: "2.1", date: "2026-05-11", description: "🖥️ إصدار PC" }, { version: "2.0", date: "2026-05-01", description: "🗡️ وضع Legends" }] },
+            "days gone": { name: "🧟 Days Gone", officialSite: "https://www.playstation.com/games/days-gone/", updates: [{ version: "1.8", date: "2026-05-10", description: "🖥️ تحسين أداء" }, { version: "1.7", date: "2026-05-01", description: "🔧 إصلاح أعطال" }] },
+            "death stranding 2": { name: "📦 Death Stranding 2", officialSite: "https://www.playstation.com/games/death-stranding-2/", updates: [{ version: "0.5", date: "2026-05-09", description: "🎬 فيلم دعائي" }, { version: "0.4", date: "2026-05-01", description: "📢 إعلان رسمي" }] },
+            "silent hill 2 remake": { name: "👻 Silent Hill 2", officialSite: "https://www.konami.com/games/silenthill/", updates: [{ version: "0.8", date: "2026-05-08", description: "🧪 تجارب بيتا" }, { version: "0.7", date: "2026-05-01", description: "🎬 فيلم دعائي" }] }
         };
 
         function displayGames(searchTerm = "") {
@@ -558,7 +371,7 @@
             }
             
             if (filteredGames.length === 0) {
-                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة (36 لعبة): Fortnite, GTA V, Minecraft, Valorant, Call of Duty, Overwatch 2, League of Legends, PUBG, Elden Ring, God of War, The Last of Us, Spider-Man 2, Resident Evil 4, Final Fantasy XVI, Hogwarts Legacy, Starfield, Cyberpunk 2077, Red Dead Redemption 2, Diablo 4, Baldur's Gate 3, Counter-Strike 2, Apex Legends, Rainbow Six Siege, FIFA 25, Assassin's Creed Shadows, Tekken 8, World of Warcraft, Destiny 2, Warframe, Path of Exile 2, The Witcher 3, Skyrim, Fallout 4, Halo Infinite, Gears 5, Sea of Thieves</div>`;
+                container.innerHTML = `<div class="no-results">😕 لا توجد ألعاب تطابق "${searchTerm}"<br><br>💡 الألعاب المتوفرة: أكثر من 56 لعبة - جرب تكتب Fortnite أو GTA V أو Minecraft</div>`;
                 return;
             }
             
