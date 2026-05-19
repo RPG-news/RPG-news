@@ -13,9 +13,28 @@
 
         body {
             font-family: 'Tahoma', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
             min-height: 100vh;
+            animation: moveBackground 10s ease infinite;
+            color: white;
+        }
+
+        /* خلفية متحركة */
+        @keyframes moveBackground {
+            0% {
+                background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
+            }
+            25% {
+                background: linear-gradient(135deg, #330000, #4d0066, #2d0040);
+            }
+            50% {
+                background: linear-gradient(135deg, #4d0000, #660080, #4d0066);
+            }
+            75% {
+                background: linear-gradient(135deg, #330000, #4d0066, #2d0040);
+            }
+            100% {
+                background: linear-gradient(135deg, #1a0000, #2d0040, #1a0033);
+            }
         }
 
         .container {
@@ -27,21 +46,24 @@
         header {
             text-align: center;
             padding: 40px 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             border-radius: 20px;
             margin-bottom: 30px;
+            border: 2px solid #ff3333;
+            box-shadow: 0 0 20px rgba(255,51,51,0.3);
         }
 
         h1 {
             font-size: 3em;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #ff3333, #cc33ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 0 10px rgba(255,51,51,0.5);
         }
 
         .subtitle {
-            color: #ccc;
+            color: #ff9999;
             margin-top: 10px;
         }
 
@@ -57,19 +79,21 @@
             font-size: 18px;
             border: none;
             border-radius: 50px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.7);
             color: white;
             outline: none;
             transition: all 0.3s;
+            border: 1px solid #ff3333;
         }
 
         .search-box:focus {
-            background: rgba(255,255,255,0.2);
-            box-shadow: 0 0 20px rgba(78,205,196,0.3);
+            background: rgba(0,0,0,0.9);
+            box-shadow: 0 0 20px rgba(255,51,51,0.5);
+            border: 1px solid #cc33ff;
         }
 
         .search-box::placeholder {
-            color: #aaa;
+            color: #aa88aa;
         }
 
         .games-grid {
@@ -80,43 +104,45 @@
         }
 
         .game-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            border: 1px solid #cc33ff;
         }
 
         .game-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: rgba(255,255,255,0.15);
+            box-shadow: 0 10px 30px rgba(255,51,51,0.4);
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #ff3333;
         }
 
         .game-title {
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 15px;
-            color: #4ecdc4;
+            color: #ff6666;
         }
 
         .update-item {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
-            border-right: 3px solid #4ecdc4;
+            border-right: 3px solid #ff3333;
         }
 
         .update-version {
             font-weight: bold;
-            color: #ff6b6b;
+            color: #ff6666;
         }
 
         .update-date {
             font-size: 0.8em;
-            color: #aaa;
+            color: #cc99ff;
             margin-top: 5px;
         }
 
@@ -124,21 +150,21 @@
             text-align: center;
             padding: 50px;
             font-size: 1.2em;
-            color: #ccc;
+            color: #ff9999;
         }
 
         footer {
             text-align: center;
             margin-top: 50px;
             padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #aaa;
+            border-top: 1px solid #ff3333;
+            color: #cc99ff;
         }
 
         .official-badge {
             display: inline-block;
-            background: #4ecdc4;
-            color: #0f0c29;
+            background: linear-gradient(45deg, #ff3333, #cc33ff);
+            color: white;
             padding: 3px 10px;
             border-radius: 20px;
             font-size: 0.7em;
@@ -160,7 +186,7 @@
     <div class="container">
         <header>
             <h1>🎮 RPG News</h1>
-            <p class="subtitle">أخبار وتحديثات الألعاب الرسمية - أكثر من 15 لعبة محدثة باستمرار</p>
+            <p class="subtitle">أخبار وتحديثات الألعاب الرسمية - أكثر من 16 لعبة محدثة باستمرار</p>
         </header>
 
         <div class="search-section">
@@ -343,7 +369,7 @@
                 gameCard.innerHTML = `
                     <div class="game-title">
                         ${game.name}
-                        <a href="${game.officialSite}" target="_blank" style="font-size: 12px; color: #4ecdc4; text-decoration: none;"> 🔗 الموقع الرسمي</a>
+                        <a href="${game.officialSite}" target="_blank" style="font-size: 12px; color: #ff6666; text-decoration: none;"> 🔗 الموقع الرسمي</a>
                     </div>
                     ${updatesHTML}
                 `;
